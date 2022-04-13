@@ -1,0 +1,38 @@
+{
+  "name": "typescript-module-usage",
+  "version": "1.0.0",
+  "description": "Typescript helper for counting usage of files within codebase",
+  "main": "index.js",
+  "scripts": {
+    "build": "babel src --out-dir dist",
+    "test": "jest --watchAll"
+  },
+  "bin": {
+    "typescript-module-usage": "./dist/cli.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thomasparsons/typescript-module-usage.git"
+  },
+  "keywords": [
+    "typescript",
+    "count",
+    "usage"
+  ],
+  "author": "thomasparsons",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/thomasparsons/typescript-module-usage/issues"
+  },
+  "homepage": "https://github.com/thomasparsons/typescript-module-usage#readme",
+  "devDependencies": {
+    "babel-eslint": "^10.1.0",
+    "babel-loader": "^8.2.4",
+    "babel-polyfill": "^6.26.0",
+    "eslint": "^8.13.0",
+    "eslint-config-node": "^4.1.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "typescript-parser": "^2.6.1"
+  }
+}
