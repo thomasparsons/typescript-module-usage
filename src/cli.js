@@ -1,5 +1,5 @@
 #! /usr/bin/env node
-import {typescriptModuleUsage} from "./functions/typescriptModuleUsage";
+import typescriptModuleUsage from "./functions/typescriptModuleUsage";
 
 console.log("-- Starting --");
 const [, , url] = process.argv;
@@ -7,7 +7,7 @@ const [, , url] = process.argv;
 (async () => {
   try {
     // paramValidation(url);
-    await typescriptModuleUsage();
+    await typescriptModuleUsage.run();
 
     console.log(" -- Finished -- ");
   } catch (e) {

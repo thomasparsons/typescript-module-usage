@@ -39,28 +39,28 @@ const groupAndCountImports = (imports) => {
   return groupedAndCounted;
 };
 
-const typescriptModuleUsage = parser
-  .parseFiles(
-    [
-      // @todo how do we get this list?
-      // we need this complete list to see what files have zero import
-      // exclude tests/stories/mocks/json etc
-      // "src/pages/index.tsx",
-      // "src/pages/404.tsx",
-      // "src/Components/Simpsons/Frame/Frame.tsx",
-    ],
-    "./" // @todo pull out of config
-  )
-  .then((parsed) => {
-    const internalImports = getInternalImports(parsed);
-    const groupedAndCounted = groupAndCountImports(internalImports);
-
-    // if output var, write to file
-
-    console.log(groupedAndCounted);
-    return groupedAndCounted;
-  });
+function run() {
+  return parser
+    .parseFiles(
+      [
+        // @todo how do we get this list?
+        // we need this complete list to see what files have zero import
+        // exclude tests/stories/mocks/json/_ etc
+        // "src/pages/index.tsx",
+        // "src/pages/404.tsx",
+        // "src/Components/Simpsons/Frame/Frame.tsx",
+      ],
+      "./" // @todo pull out of config
+    )
+    .then((parsed) => {
+      const internalImports = getInternalImports(parsed);
+      const groupedAndCounted = groupAndCountImports(internalImports);
+      // if output var, write to file
+      console.log("groupedAndCounted", groupedAndCounted);
+      return groupedAndCounted;
+    });
+}
 
 export default {
-  typescriptModuleUsage,
+  run,
 };
