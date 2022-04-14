@@ -1,6 +1,27 @@
 //
+function sortObject(obj) {
+  var arr = [];
+  for (var prop in obj) {
+    if (obj.hasOwnProperty(prop)) {
+      arr.push({
+        key: prop,
+        value: obj[prop],
+      });
+    }
+  }
+  arr.sort(function (a, b) {
+    return a.value - b.value;
+  });
+  //arr.sort(function(a, b) { a.value.toLowerCase().localeCompare(b.value.toLowerCase()); }); //use this to sort as strings
+  return arr; // returns array
+}
+
 const groupAndCountImports = (config, files, imports) => {
   const groupedAndCounted = [];
+
+  if (imports.length === 0) {
+    return groupedAndCounted;
+  }
 
   /*
   // add Zero Used files in
@@ -15,15 +36,17 @@ const groupAndCountImports = (config, files, imports) => {
   });
   */
 
-  imports.forEach(({ libraryName }) => {
-    groupedAndCounted[libraryName]
-      ? groupedAndCounted[libraryName]++
-      : (groupedAndCounted[libraryName] = 1);
-  });
+  const results = imports.reduce((results, imp) => {
+    (results[imp.libraryName] = results[imp.libraryName] || []).push(imp);
+    return results;
+  }, {});
 
-  // @todo sort
-  // return groupedAndCounted.sort((a, b) => a < b);
-  return groupedAndCounted;
+  return Object.keys(results)
+    .map((key) => ({
+      libraryName: key,
+      count: results[key].length,
+    }))
+    .sort((a, b) => b.count - a.count);
 };
 
 export default groupAndCountImports;
