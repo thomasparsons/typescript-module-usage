@@ -1,0 +1,9 @@
+{
+  "baseUrl": "./",
+  "filePath": "src/**/*.js",
+  "paths": {
+    "@Simpsons/*": ["src/Components/Simpsons/*"],
+    "@images/*": ["src/images/*"],
+    "@utils/*": ["src/utils/*"]
+  }
+}
