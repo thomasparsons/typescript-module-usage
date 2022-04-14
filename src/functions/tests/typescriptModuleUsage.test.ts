@@ -3,6 +3,9 @@ import typescriptModuleUsage from "../typescriptModuleUsage";
 
 describe("typescriptModuleUsage function", () => {
   it("", () => {
-    expect(typescriptModuleUsage.run()).toBe();
+    const mockConfig = {
+      filePath: "./",
+    };
+    expect(typescriptModuleUsage.run(mockConfig)).toBe();
   });
 });

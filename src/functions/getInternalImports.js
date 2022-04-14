@@ -1,8 +1,10 @@
 //
-const getInternalImports = (config, parsed) => {
-  const importsUsed = [];
+const getInternalImports = ({ paths }, parsed) => {
+  if (!parsed.length) {
+    return [];
+  }
 
-  const { paths } = config;
+  const importsUsed = [];
 
   parsed.forEach((element) => {
     element.imports.forEach((importObj) => {

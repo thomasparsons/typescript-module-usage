@@ -65,6 +65,7 @@ describe("groupAndCountImports function", () => {
       ]);
     });
   });
+
   describe("orders the imports", () => {
     it("orders by most used first", () => {
       const mockImports = [
