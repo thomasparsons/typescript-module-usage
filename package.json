@@ -37,6 +37,7 @@
     "eslint-config-node": "^4.1.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.0.0",
+    "glob": "^8.0.1",
     "jest": "^27.5.1",
     "typescript-parser": "^2.6.1"
   }

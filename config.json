@@ -1,5 +1,5 @@
 {
   "baseUrl": "./",
-  "filePath": "src/**.tsx",
+  "filePath": "src/**/*.js",
   "paths": ["@images", "@utils", "@Simpsons"]
 }
