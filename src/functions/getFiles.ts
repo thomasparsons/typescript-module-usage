@@ -1,7 +1,7 @@
 //
 import glob from "glob";
 
-const getFiles = (config) => {
+const getFiles = (config): string[] => {
   return glob.sync(config.filePath, {
     root: config.baseUrl,
     ignore: [

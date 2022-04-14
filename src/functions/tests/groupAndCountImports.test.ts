@@ -1,4 +1,5 @@
 //
+import { Import } from "typescript-parser";
 import groupAndCountImports from "../groupAndCountImports";
 
 const mockConfig = {};
@@ -18,7 +19,7 @@ describe("groupAndCountImports function", () => {
         { libraryName: "@import/import-one" },
         { libraryName: "@import/import-two" },
         { libraryName: "@import/import-three" },
-      ];
+      ] as Import[];
       expect(groupAndCountImports(mockConfig, mockFiles, mockImports)).toEqual([
         { libraryName: "@import/import-one", count: 1 },
         { libraryName: "@import/import-two", count: 1 },
@@ -31,7 +32,7 @@ describe("groupAndCountImports function", () => {
         { libraryName: "@import/import-one" },
         { libraryName: "@import/import-one" },
         { libraryName: "@import/import-two" },
-      ];
+      ] as Import[];
       expect(groupAndCountImports(mockConfig, mockFiles, mockImports)).toEqual([
         { libraryName: "@import/import-one", count: 2 },
         { libraryName: "@import/import-two", count: 1 },
@@ -57,7 +58,7 @@ describe("groupAndCountImports function", () => {
         { libraryName: "@import/import-three" },
         { libraryName: "@import/import-three" },
         { libraryName: "@import/import-three" },
-      ];
+      ] as Import[];
       expect(groupAndCountImports(mockConfig, mockFiles, mockImports)).toEqual([
         { libraryName: "@import/import-two", count: 7 },
         { libraryName: "@import/import-three", count: 6 },
@@ -89,7 +90,7 @@ describe("groupAndCountImports function", () => {
         { libraryName: "@import/import-two" },
         { libraryName: "@import/import-two" },
         { libraryName: "@import/import-three" },
-      ];
+      ] as Import[];
       expect(
         groupAndCountImports(mockConfig, mockFiles, mockImports)
       ).toStrictEqual([
@@ -128,7 +129,7 @@ describe("groupAndCountImports function", () => {
         { libraryName: "@import/import-two/hello" },
         { libraryName: "@import/import-two/hello" },
         { libraryName: "@import/import-three/hello" },
-      ];
+      ] as Import[];
       expect(
         groupAndCountImports(mockConfig, mockFiles, mockImports)
       ).toStrictEqual([

@@ -1,5 +1,7 @@
 //
-const groupAndCountImports = (config, files, imports) => {
+import { Import } from "typescript-parser";
+
+const groupAndCountImports = (config, files: string[], imports: Import[]) => {
   if (imports.length === 0) {
     return [];
   }

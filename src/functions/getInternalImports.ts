@@ -1,10 +1,12 @@
 //
-const getInternalImports = ({ paths }, parsed) => {
+import { File, Import } from "typescript-parser";
+
+const getInternalImports = ({ paths }, parsed: File[]) => {
   if (!parsed.length) {
     return [];
   }
 
-  const importsUsed = [];
+  const importsUsed: Import[] = [];
 
   parsed.forEach((element) => {
     element.imports.forEach((importObj) => {
