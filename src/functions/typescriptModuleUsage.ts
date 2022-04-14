@@ -3,10 +3,11 @@ import { TypescriptParser } from "typescript-parser";
 import getInternalImports from "./getInternalImports";
 import groupAndCountImports from "./groupAndCountImports";
 import getFiles from "./getFiles";
+import { Config } from "../types";
 
 const parser = new TypescriptParser();
 
-function run(config) {
+function run(config: Config) {
   const files = getFiles(config);
 
   if (files.length === 0) {

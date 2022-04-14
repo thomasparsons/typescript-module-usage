@@ -11,6 +11,5 @@
     ]
   ],
   "ignore": ["**/*.test.*"],
-
   "plugins": ["@babel/plugin-transform-typescript"]
 }
