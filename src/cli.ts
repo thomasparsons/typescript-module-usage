@@ -1,5 +1,6 @@
 #! /usr/bin/env node
 import typescriptModuleUsage from "./functions/typescriptModuleUsage";
+import { Config } from "./types";
 
 console.log("-- Starting --");
 const [, , config] = process.argv;
@@ -7,7 +8,7 @@ const [, , config] = process.argv;
 (async () => {
   try {
     // paramValidation(url);
-    const jsonData = require(`${__dirname}${config}`);
+    const jsonData: Config = require(`${__dirname}${config}`);
     // configValidation(jsonData);
     await typescriptModuleUsage.run(jsonData);
 

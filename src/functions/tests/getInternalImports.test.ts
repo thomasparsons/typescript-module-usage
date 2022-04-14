@@ -1,5 +1,5 @@
 //
-import { File, Import } from "typescript-parser";
+import { File } from "typescript-parser";
 import getInternalImports from "../getInternalImports";
 
 describe("getInternalImports function", () => {

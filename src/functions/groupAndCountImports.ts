@@ -12,6 +12,7 @@ const groupAndCountImports = (
   }
 
   /*
+  const groupedAndCounted = [];
   files.map((f) => {
     console.log(config.paths);
 
