@@ -18,6 +18,12 @@ function run(config) {
 
   return parser.parseFiles(files, baseUrl).then((parsed) => {
     const internalImports = getInternalImports(config, parsed);
+
+    if (internalImports.length === 0) {
+      console.error(" -- No Internal Imports found -- ");
+      return [];
+    }
+
     const groupedAndCounted = groupAndCountImports(
       config,
       files,
