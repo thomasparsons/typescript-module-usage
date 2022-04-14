@@ -2,16 +2,18 @@
 import typescriptModuleUsage from "./functions/typescriptModuleUsage";
 
 console.log("-- Starting --");
-const [, , url] = process.argv;
+const [, , config] = process.argv;
 
 (async () => {
   try {
     // paramValidation(url);
-    await typescriptModuleUsage.run();
+    const jsonData = require(config);
+    // configValidation(jsonData);
+    await typescriptModuleUsage.run(jsonData);
 
     console.log(" -- Finished -- ");
   } catch (e) {
-    console.error(" -- Something when wrong -- ");
+    console.error(" -- Something went wrong -- ");
     console.error(e);
   } finally {
     process.exit(0);

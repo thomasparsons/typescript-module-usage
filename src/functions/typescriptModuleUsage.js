@@ -1,64 +1,28 @@
+//
 import { TypescriptParser } from "typescript-parser";
-
-const commandArguments = process.argv.slice(2);
-
-// const data = require("./tsconfig.json");
-// console.log(data);
+import getInternalImports from "./getInternalImports";
+import groupAndCountImports from "./groupAndCountImports";
+import getFiles from "./getFiles";
 
 const parser = new TypescriptParser();
 
-const getInternalImports = (parsed) => {
-  const importsUsed = [];
+function run(config) {
+  const files = getFiles(config);
 
-  parsed.forEach((element) => {
-    element.imports.forEach((importObj) => {
-      const { libraryName } = importObj;
-      if (
-        // @todo pull out of config
-        libraryName.includes("@images") ||
-        libraryName.includes("@utils") ||
-        libraryName.includes("@Simpsons")
-      ) {
-        importsUsed.push(importObj);
-      }
-    });
+  if (files.length === 0) {
+    console.error(" -- No Files to search -- ");
+    return;
+  }
+
+  const baseUrl = config?.baseUrl || "./";
+
+  return parser.parseFiles(files, baseUrl).then((parsed) => {
+    const internalImports = getInternalImports(config, parsed);
+    const groupedAndCounted = groupAndCountImports(internalImports);
+    // if output var, write to file
+    console.log("groupedAndCounted", groupedAndCounted);
+    return groupedAndCounted;
   });
-
-  return importsUsed;
-};
-
-const groupAndCountImports = (imports) => {
-  const groupedAndCounted = [];
-
-  imports.forEach(({ libraryName }) => {
-    groupedAndCounted[libraryName]
-      ? groupedAndCounted[libraryName]++
-      : (groupedAndCounted[libraryName] = 1);
-  });
-
-  return groupedAndCounted;
-};
-
-function run() {
-  return parser
-    .parseFiles(
-      [
-        // @todo how do we get this list?
-        // we need this complete list to see what files have zero import
-        // exclude tests/stories/mocks/json/_ etc
-        // "src/pages/index.tsx",
-        // "src/pages/404.tsx",
-        // "src/Components/Simpsons/Frame/Frame.tsx",
-      ],
-      "./" // @todo pull out of config
-    )
-    .then((parsed) => {
-      const internalImports = getInternalImports(parsed);
-      const groupedAndCounted = groupAndCountImports(internalImports);
-      // if output var, write to file
-      console.log("groupedAndCounted", groupedAndCounted);
-      return groupedAndCounted;
-    });
 }
 
 export default {
