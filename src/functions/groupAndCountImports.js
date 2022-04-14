@@ -1,13 +1,10 @@
 //
 const groupAndCountImports = (config, files, imports) => {
-  const groupedAndCounted = [];
-
   if (imports.length === 0) {
-    return groupedAndCounted;
+    return [];
   }
 
   /*
-  // add Zero Used files in
   files.map((f) => {
     console.log(config.paths);
 

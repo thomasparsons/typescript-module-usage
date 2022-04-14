@@ -99,5 +99,46 @@ describe("groupAndCountImports function", () => {
         { libraryName: "@import/import-four", count: 1 },
       ]);
     });
+
+    it("orders by most used first with longer import names", () => {
+      const mockImports = [
+        { libraryName: "@import/import-four" },
+        { libraryName: "@import/import-one" },
+        { libraryName: "@import/import-two" },
+        { libraryName: "@import/import-two" },
+        { libraryName: "@import/import-one" },
+        { libraryName: "@import/import-three" },
+        { libraryName: "@import/import-five" },
+        { libraryName: "@import/import-three" },
+        { libraryName: "@import/import-one" },
+        { libraryName: "@import/import-two" },
+        { libraryName: "@import/import-three" },
+        { libraryName: "@import/import-three" },
+        { libraryName: "@import/import-five" },
+        { libraryName: "@import/import-one" },
+        { libraryName: "@import/import-two" },
+        { libraryName: "@import/import-two" },
+        { libraryName: "@import/import-three" },
+        { libraryName: "@import/import-two" },
+        { libraryName: "@import/import-two" },
+        { libraryName: "@import/import-three" },
+        { libraryName: "@import/import-two/hello" },
+        { libraryName: "@import/import-three/hello" },
+        { libraryName: "@import/import-two/hello" },
+        { libraryName: "@import/import-two/hello" },
+        { libraryName: "@import/import-three/hello" },
+      ];
+      expect(
+        groupAndCountImports(mockConfig, mockFiles, mockImports)
+      ).toStrictEqual([
+        { libraryName: "@import/import-two", count: 7 },
+        { libraryName: "@import/import-three", count: 6 },
+        { libraryName: "@import/import-one", count: 4 },
+        { libraryName: "@import/import-two/hello", count: 3 },
+        { libraryName: "@import/import-five", count: 2 },
+        { libraryName: "@import/import-three/hello", count: 2 },
+        { libraryName: "@import/import-four", count: 1 },
+      ]);
+    });
   });
 });
