@@ -7,7 +7,7 @@ const getInternalImports = (config, parsed) => {
   parsed.forEach((element) => {
     element.imports.forEach((importObj) => {
       const { libraryName } = importObj;
-      if (paths.some((path) => libraryName.includes(path))) {
+      if (Object.keys(paths).some((path) => libraryName.includes(path))) {
         importsUsed.push(importObj);
       }
     });
