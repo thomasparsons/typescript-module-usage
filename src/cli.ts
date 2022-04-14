@@ -7,7 +7,7 @@ const [, , config] = process.argv;
 (async () => {
   try {
     // paramValidation(url);
-    const jsonData = require(config);
+    const jsonData = require(`${__dirname}${config}`);
     // configValidation(jsonData);
     await typescriptModuleUsage.run(jsonData);
 
