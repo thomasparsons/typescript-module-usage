@@ -15,4 +15,11 @@ Typescript helper for counting usage of files within codebase
 }
 ```
 
+### Requirements
+
+This package extends the usage of TypeScript Module Paths: [Docs](https://www.typescriptlang.org/docs/handbook/module-resolution.html!)
+
 ## Options
+
+- Input: ``
+- Output: `--output=output.json`

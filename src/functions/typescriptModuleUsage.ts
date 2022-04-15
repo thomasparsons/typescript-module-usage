@@ -3,6 +3,7 @@ import { TypescriptParser } from "typescript-parser";
 import getInternalImports from "./getInternalImports";
 import groupAndCountImports from "./groupAndCountImports";
 import getFiles from "./getFiles";
+import output from "./output";
 import { Config } from "../types";
 
 const parser = new TypescriptParser();
@@ -31,7 +32,7 @@ function run(config: Config) {
       internalImports
     );
     // if output var, write to file
-    console.log("groupedAndCounted", groupedAndCounted);
+    output(groupedAndCounted);
     return groupedAndCounted;
   });
 }
