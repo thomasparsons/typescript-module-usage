@@ -23,13 +23,26 @@ describe("getMappedImports function", () => {
     expect(getMappedImports(mockConfig, mockFiles).length).toBe(0);
   });
 
-  it("replaces the file path with the applicable paths", () => {
+  it("replaces the file path with the applicable paths with .ts files", () => {
     const mockConfig = {
       baseUrl: "",
       filePath: "",
       paths: { "@src/*": ["src/*"] },
     };
     const mockFiles = ["src/cli.ts", "src/getFiles/getFiles.ts"];
+
+    const mappedImports = getMappedImports(mockConfig, mockFiles);
+    expect(mappedImports[0]).toBe("@src/cli");
+    expect(mappedImports[1]).toBe("@src/getFiles/getFiles");
+  });
+
+  it("replaces the file path with the applicable paths with .tsx files", () => {
+    const mockConfig = {
+      baseUrl: "",
+      filePath: "",
+      paths: { "@src/*": ["src/*"] },
+    };
+    const mockFiles = ["src/cli.tsx", "src/getFiles/getFiles.tsx"];
 
     const mappedImports = getMappedImports(mockConfig, mockFiles);
     expect(mappedImports[0]).toBe("@src/cli");
