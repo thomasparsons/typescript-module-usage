@@ -19,12 +19,22 @@ const groupAndCountImports = (
     return results;
   }, {});
 
-  return Object.keys(results)
+  const usedImports = Object.keys(results)
     .map((key) => ({
       libraryName: key,
       count: results[key].length,
     }))
     .sort((a, b) => b.count - a.count);
+
+  mappedImports.map((mappedImport) => {
+    if (!results[mappedImport]) {
+      usedImports.push({
+        libraryName: mappedImport,
+        count: 0,
+      });
+    }
+  });
+  return usedImports;
 };
 
 export default groupAndCountImports;

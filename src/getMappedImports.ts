@@ -6,20 +6,18 @@ const getMappedImports = (config: Config, files: string[]) => {
     return [];
   }
 
-  console.log("files", files);
-  console.log(config.paths);
+  const mappedImports: string[] = [];
 
-  const groupedAndCounted = [];
-  files.map((f) => {
-    // if f includes one of the config path values,
-    // then swap everything up to the end of that value with the
-    // config path key that it matches with
-    const mappedFileName = f;
+  files.forEach((f) => {
+    Object.keys(config.paths).forEach((path) => {
+      const value = config.paths[path][0].replace("/*", "");
+      if (f.includes(value)) {
+        mappedImports.push(f.replace(value, path.replace("/*", "")));
+      }
+    });
   });
 
-  // console.log(groupedAndCounted);
-
-  return groupedAndCounted;
+  return mappedImports;
 };
 
 export default getMappedImports;

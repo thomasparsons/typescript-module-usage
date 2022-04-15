@@ -1,14 +1,19 @@
 //
 import { Import } from "typescript-parser";
 import groupAndCountImports from "../groupAndCountImports";
-import { Config } from "../types";
 
-const mockConfig = {} as Config;
-const mockFiles = [];
+const mockConfig = {
+  baseUrl: "",
+  filePath: "",
+  paths: {
+    "@import/*": ["import/*"],
+  },
+};
 
 describe("groupAndCountImports function", () => {
   it("returns back an empty object if no imports are passed in", () => {
     const mockImports = [];
+    const mockFiles = [];
     expect(groupAndCountImports(mockConfig, mockFiles, mockImports)).toEqual(
       []
     );
@@ -21,6 +26,7 @@ describe("groupAndCountImports function", () => {
         { libraryName: "@import/import-two" },
         { libraryName: "@import/import-three" },
       ] as Import[];
+      const mockFiles = [];
       expect(groupAndCountImports(mockConfig, mockFiles, mockImports)).toEqual([
         { libraryName: "@import/import-one", count: 1 },
         { libraryName: "@import/import-two", count: 1 },
@@ -34,6 +40,7 @@ describe("groupAndCountImports function", () => {
         { libraryName: "@import/import-one" },
         { libraryName: "@import/import-two" },
       ] as Import[];
+      const mockFiles = [];
       expect(groupAndCountImports(mockConfig, mockFiles, mockImports)).toEqual([
         { libraryName: "@import/import-one", count: 2 },
         { libraryName: "@import/import-two", count: 1 },
@@ -60,6 +67,7 @@ describe("groupAndCountImports function", () => {
         { libraryName: "@import/import-three" },
         { libraryName: "@import/import-three" },
       ] as Import[];
+      const mockFiles = [];
       expect(groupAndCountImports(mockConfig, mockFiles, mockImports)).toEqual([
         { libraryName: "@import/import-two", count: 7 },
         { libraryName: "@import/import-three", count: 6 },
@@ -92,6 +100,8 @@ describe("groupAndCountImports function", () => {
         { libraryName: "@import/import-two" },
         { libraryName: "@import/import-three" },
       ] as Import[];
+      const mockFiles = [];
+
       expect(
         groupAndCountImports(mockConfig, mockFiles, mockImports)
       ).toStrictEqual([
@@ -131,6 +141,7 @@ describe("groupAndCountImports function", () => {
         { libraryName: "@import/import-two/hello" },
         { libraryName: "@import/import-three/hello" },
       ] as Import[];
+      const mockFiles = [];
       expect(
         groupAndCountImports(mockConfig, mockFiles, mockImports)
       ).toStrictEqual([
@@ -141,6 +152,29 @@ describe("groupAndCountImports function", () => {
         { libraryName: "@import/import-five", count: 2 },
         { libraryName: "@import/import-three/hello", count: 2 },
         { libraryName: "@import/import-four", count: 1 },
+      ]);
+    });
+  });
+
+  describe("handles files", () => {
+    it("returns back an object with the imports counted, unique imports", () => {
+      const mockImports = [
+        { libraryName: "@import/import-one" },
+        { libraryName: "@import/import-two" },
+        { libraryName: "@import/import-three" },
+      ] as Import[];
+
+      const mockFiles = [
+        "import/import-one",
+        "import/import-two",
+        "import/import-three",
+        "import/import-six",
+      ];
+      expect(groupAndCountImports(mockConfig, mockFiles, mockImports)).toEqual([
+        { libraryName: "@import/import-one", count: 1 },
+        { libraryName: "@import/import-two", count: 1 },
+        { libraryName: "@import/import-three", count: 1 },
+        { libraryName: "@import/import-six", count: 0 },
       ]);
     });
   });
