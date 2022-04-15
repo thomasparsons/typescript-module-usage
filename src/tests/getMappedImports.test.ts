@@ -32,7 +32,7 @@ describe("getMappedImports function", () => {
     const mockFiles = ["src/cli.ts", "src/getFiles/getFiles.ts"];
 
     const mappedImports = getMappedImports(mockConfig, mockFiles);
-    expect(mappedImports[0]).toBe("@src/cli.ts");
-    expect(mappedImports[1]).toBe("@src/getFiles/getFiles.ts");
+    expect(mappedImports[0]).toBe("@src/cli");
+    expect(mappedImports[1]).toBe("@src/getFiles/getFiles");
   });
 });
