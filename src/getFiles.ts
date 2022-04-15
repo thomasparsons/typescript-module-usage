@@ -1,11 +1,10 @@
 //
-import glob from "glob";
-import path from "path";
-import { Config } from "../types";
+import { sync } from "glob";
+import { Config } from "./types";
 
 const getFiles = (config: Config): string[] => {
-  return glob.sync(path.join(process.cwd(), config.filePath), {
-    // root: config.baseUrl,
+  return sync(config.filePath, {
+    root: config.baseUrl,
     ignore: [
       "**/*.stories*",
       "**/*.test*",

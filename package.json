@@ -4,7 +4,8 @@
   "description": "Typescript helper for counting usage of files within codebase",
   "main": "index.js",
   "scripts": {
-    "build": "babel src --out-dir dist --extensions \".ts\"",
+    "build": "tsc -p tsconfig-build.json",
+    "clean": "tsc --build --clean",
     "test": "jest"
   },
   "bin": {

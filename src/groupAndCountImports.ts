@@ -1,6 +1,6 @@
 //
 import { Import } from "typescript-parser";
-import { Config } from "../types";
+import { Config } from "./types";
 
 const groupAndCountImports = (
   config: Config,

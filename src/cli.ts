@@ -1,6 +1,6 @@
 #! /usr/bin/env node
-import path from "path";
-import typescriptModuleUsage from "./functions/typescriptModuleUsage";
+import * as path from "path";
+import typescriptModuleUsage from "./typescriptModuleUsage";
 import { Config } from "./types";
 
 console.log("-- Starting --");

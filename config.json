@@ -1,7 +1,7 @@
 {
   "baseUrl": "./",
-  "filePath": "src/**/*.js",
+  "filePath": "src/**/*.ts",
   "paths": {
-    "functions": ["src/functions"]
+    "src": ["src"]
   }
 }
