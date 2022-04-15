@@ -11,10 +11,9 @@ const getInternalImports = ({ paths }, parsed: File[]) => {
   parsed.forEach((element) => {
     element.imports.forEach((importObj) => {
       const { libraryName } = importObj;
-      // console.log(paths, libraryName);
       if (
         Object.keys(paths).some((path) =>
-          libraryName.includes(path.replace("/*", ""))
+          libraryName.includes(path.replace("*", ""))
         )
       ) {
         importsUsed.push(importObj);
