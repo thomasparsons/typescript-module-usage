@@ -13,7 +13,7 @@ const getInternalImports = ({ paths }, parsed: File[]) => {
       const { libraryName } = importObj;
       if (
         Object.keys(paths).some((path) =>
-          libraryName.includes(path.replace("*", ""))
+          libraryName.includes(path.replace("/*", ""))
         )
       ) {
         importsUsed.push(importObj);

@@ -18,22 +18,21 @@ function run(config: Config) {
 
   const baseUrl = config?.baseUrl || "./";
 
-  return parser.parseFiles(files, baseUrl).then((parsed) => {
+  parser.parseFiles(files, baseUrl).then((parsed) => {
     const internalImports = getInternalImports(config, parsed);
 
-    if (internalImports.length === 0) {
-      console.error(" -- No Internal Imports found -- ");
-      return [];
-    }
+    // if (internalImports.length === 0) {
+    //   console.error(" -- No Internal Imports found -- ");
+    //   return [];
+    // }
 
     const groupedAndCounted = groupAndCountImports(
       config,
       files,
       internalImports
     );
-    // if output var, write to file
+
     output(groupedAndCounted);
-    return groupedAndCounted;
   });
 }
 

@@ -1,5 +1,6 @@
 //
 import { Import } from "typescript-parser";
+import getMappedImports from "./getMappedImports";
 import { Config } from "./types";
 
 const groupAndCountImports = (
@@ -7,22 +8,11 @@ const groupAndCountImports = (
   files: string[],
   imports: Import[]
 ) => {
-  if (imports.length === 0) {
-    return [];
-  }
+  // if (imports.length === 0) {
+  //   return [];
+  // }
 
-  /*
-  const groupedAndCounted = [];
-  files.map((f) => {
-    console.log(config.paths);
-
-    // if f includes one of the config path values,
-    // then swap everything up to the end of that value with the
-    // config path key that it matches with
-    const mappedFileName = f;
-    groupedAndCounted[mappedFileName] = 0;
-  });
-  */
+  const mappedImports = getMappedImports(config, files);
 
   const results = imports.reduce((results, imp) => {
     (results[imp.libraryName] = results[imp.libraryName] || []).push(imp);

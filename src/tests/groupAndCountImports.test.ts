@@ -1,8 +1,9 @@
 //
 import { Import } from "typescript-parser";
 import groupAndCountImports from "../groupAndCountImports";
+import { Config } from "../types";
 
-const mockConfig = {};
+const mockConfig = {} as Config;
 const mockFiles = [];
 
 describe("groupAndCountImports function", () => {

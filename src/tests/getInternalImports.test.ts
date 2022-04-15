@@ -19,8 +19,8 @@ describe("getInternalImports function", () => {
       {
         filePath: "src/currentFile",
         imports: [{ libraryName: "@import/one" }],
-      } as File,
-    ];
+      },
+    ] as File[];
     expect(getInternalImports(mockConfig, mockParsed).length).toBe(0);
   });
 
@@ -33,8 +33,8 @@ describe("getInternalImports function", () => {
         {
           filePath: "src/currentFile",
           imports: [{ libraryName: "@import/one" }],
-        } as File,
-      ];
+        },
+      ] as File[];
       expect(getInternalImports(mockConfig, mockParsed)[0]).toEqual({
         libraryName: "@import/one",
       });
@@ -48,8 +48,8 @@ describe("getInternalImports function", () => {
         {
           filePath: "src/currentFile",
           imports: [{ libraryName: "@import/one" }],
-        } as File,
-      ];
+        },
+      ] as File[];
       expect(getInternalImports(mockConfig, mockParsed)[0]).toEqual({
         libraryName: "@import/one",
       });
@@ -63,8 +63,8 @@ describe("getInternalImports function", () => {
         {
           filePath: "src/currentFile",
           imports: [{ libraryName: "@import/one" }],
-        } as File,
-      ];
+        },
+      ] as File[];
       expect(getInternalImports(mockConfig, mockParsed)[0]).toEqual({
         libraryName: "@import/one",
       });
@@ -78,8 +78,8 @@ describe("getInternalImports function", () => {
         {
           filePath: "src/currentFile",
           imports: [{ libraryName: "@import/one" }],
-        } as File,
-      ];
+        },
+      ] as File[];
       expect(getInternalImports(mockConfig, mockParsed)[0]).toEqual({
         libraryName: "@import/one",
       });
