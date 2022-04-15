@@ -10,6 +10,6 @@
       }
     ]
   ],
-  "ignore": ["**/*.test.*"],
+  "ignore": ["**/*.test.*", "**/*/types.ts"],
   "plugins": ["@babel/plugin-transform-typescript"]
 }
