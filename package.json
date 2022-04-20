@@ -6,7 +6,7 @@
   "scripts": {
     "build": "tsc -p tsconfig-build.json",
     "clean": "tsc --build --clean",
-    "test": "jest",
+    "test": "jest src",
     "lint": "tslint -c tslint.json 'src/**/*.ts'",
     "type-check": "tsc --noEmit"
   },
