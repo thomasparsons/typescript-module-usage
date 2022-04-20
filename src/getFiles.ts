@@ -1,4 +1,3 @@
-//
 import { sync } from "glob";
 import { Config } from "./types";
 

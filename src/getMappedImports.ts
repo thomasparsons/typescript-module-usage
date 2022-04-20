@@ -1,4 +1,3 @@
-//
 import { Config } from "./types";
 
 const getMappedImports = (config: Config, files: string[]) => {

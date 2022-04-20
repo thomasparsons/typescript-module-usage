@@ -1,4 +1,3 @@
-//
 import { Import } from "typescript-parser";
 import groupAndCountImports from "../groupAndCountImports";
 

@@ -1,4 +1,3 @@
-//
 import { File, Import } from "typescript-parser";
 
 const getInternalImports = ({ paths }, parsed: File[]) => {

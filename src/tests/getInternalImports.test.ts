@@ -1,4 +1,3 @@
-//
 import { File } from "typescript-parser";
 import getInternalImports from "../getInternalImports";
 

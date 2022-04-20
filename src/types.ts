@@ -1,4 +1,3 @@
-//
 export type Config = {
   baseUrl: string;
   paths: {
