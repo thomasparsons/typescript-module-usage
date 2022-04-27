@@ -5,3 +5,8 @@ export type Config = {
   };
   filePath: string;
 };
+
+export type Output = {
+  libraryName: string;
+  count: number;
+};

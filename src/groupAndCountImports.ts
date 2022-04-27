@@ -1,12 +1,12 @@
 import { Import } from "typescript-parser";
 import getMappedImports from "./getMappedImports";
-import { Config } from "./types";
+import { Config, Output } from "./types";
 
 const groupAndCountImports = (
   config: Config,
   files: string[],
   imports: Import[]
-) => {
+): Output[] => {
   if (imports.length === 0) {
     return [];
   }
@@ -18,7 +18,7 @@ const groupAndCountImports = (
     return results;
   }, {});
 
-  const usedImports = Object.keys(resultsArray)
+  const usedImports: Output[] = Object.keys(resultsArray)
     .map((key) => ({
       libraryName: key,
       count: resultsArray[key].length,

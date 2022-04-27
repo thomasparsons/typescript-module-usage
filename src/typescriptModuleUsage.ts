@@ -3,7 +3,7 @@ import getInternalImports from "./getInternalImports";
 import groupAndCountImports from "./groupAndCountImports";
 import getFiles from "./getFiles";
 import output from "./output";
-import { Config } from "./types";
+import { Config, Output } from "./types";
 
 const parser = new TypescriptParser();
 
@@ -25,7 +25,7 @@ function run(config: Config) {
       return [];
     }
 
-    const groupedAndCounted = groupAndCountImports(
+    const groupedAndCounted: Output[] = groupAndCountImports(
       config,
       files,
       internalImports
