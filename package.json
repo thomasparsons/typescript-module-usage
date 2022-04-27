@@ -2,7 +2,8 @@
   "name": "typescript-module-usage",
   "version": "1.0.2",
   "description": "Typescript helper for counting usage of files within codebase",
-  "main": "utils.js",
+  "main": "./dist/utils.js",
+  "types": "./dist/types.d.ts",
   "scripts": {
     "build": "tsc -p tsconfig-build.json",
     "clean": "tsc --build --clean",
