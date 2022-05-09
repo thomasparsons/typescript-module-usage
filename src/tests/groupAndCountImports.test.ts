@@ -155,8 +155,8 @@ describe("groupAndCountImports function", () => {
     });
   });
 
-  describe("handles files", () => {
-    it("returns back an object with the imports counted, unique imports", () => {
+  describe("handles files with no imports", () => {
+    it("returns back the unused import with a zero count", () => {
       const mockImports = [
         { libraryName: "@import/import-one" },
         { libraryName: "@import/import-two" },
@@ -164,11 +164,12 @@ describe("groupAndCountImports function", () => {
       ] as Import[];
 
       const mockFiles = [
-        "import/import-one",
-        "import/import-two",
-        "import/import-three",
-        "import/import-six",
+        "import/import-one.tsx",
+        "import/import-two.tsx",
+        "import/import-three.tsx",
+        "import/import-six.tsx",
       ];
+
       expect(groupAndCountImports(mockConfig, mockFiles, mockImports)).toEqual([
         { libraryName: "@import/import-one", count: 1 },
         { libraryName: "@import/import-two", count: 1 },

@@ -13,7 +13,7 @@ const getMappedImports = (config: Config, files: string[]) => {
       if (f.includes(value)) {
         // @todo remove file paths
         const a = f.replace(value, path.replace("/*", ""));
-        const b = a.replace(/.tsx|.ts|.js/gi, "");
+        const b = a.replace(/.[^.]*$/gi, "");
         mappedImports.push(b);
       }
     });
