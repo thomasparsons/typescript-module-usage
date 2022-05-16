@@ -48,13 +48,26 @@ describe("getMappedImports function", () => {
     expect(mappedImports[1]).toBe("@src/getFiles/getFiles");
   });
 
-  it("only replaces the end of the file and not in the middle", () => {
+  it("only replaces the end of the file and not in the middle - .tsx", () => {
     const mockConfig = {
       baseUrl: "",
       filePath: "",
       paths: { "@src/*": ["src/*"] },
     };
     const mockFiles = ["src/ctsxli.tsx", "src/getFiles/gtsxetFiles.tsx"];
+
+    const mappedImports = getMappedImports(mockConfig, mockFiles);
+    expect(mappedImports[0]).toBe("@src/ctsxli");
+    expect(mappedImports[1]).toBe("@src/getFiles/gtsxetFiles");
+  });
+
+  it("only replaces the end of the file and not in the middle -.ts", () => {
+    const mockConfig = {
+      baseUrl: "",
+      filePath: "",
+      paths: { "@src/*": ["src/*"] },
+    };
+    const mockFiles = ["src/ctsxli.ts", "src/getFiles/gtsxetFiles.ts"];
 
     const mappedImports = getMappedImports(mockConfig, mockFiles);
     expect(mappedImports[0]).toBe("@src/ctsxli");

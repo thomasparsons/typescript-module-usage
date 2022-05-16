@@ -7,14 +7,20 @@ const getMappedImports = (config: Config, files: string[]) => {
 
   const mappedImports: string[] = [];
 
-  files.forEach((f) => {
+  files.forEach((fileObject) => {
     Object.keys(config.paths).forEach((path) => {
       const value = config.paths[path][0].replace("/*", "");
-      if (f.includes(value)) {
-        // @todo remove file paths
-        const a = f.replace(value, path.replace("/*", ""));
-        const b = a.replace(/.[^.]*$/gi, "");
-        mappedImports.push(b);
+      if (fileObject.includes(value)) {
+        const filePathWithoutWildCard = fileObject.replace(
+          value,
+          path.replace("/*", "")
+        );
+        const filPathWithoutFileType = filePathWithoutWildCard
+          .replace(".tsx", "")
+          .replace(".ts", "")
+          .replace(".jsx", "")
+          .replace(".js", "");
+        mappedImports.push(filPathWithoutFileType);
       }
     });
   });
