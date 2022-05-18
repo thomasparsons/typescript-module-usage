@@ -15,11 +15,7 @@ const getMappedImports = (config: Config, files: string[]) => {
           value,
           path.replace("/*", "")
         );
-        const filPathWithoutFileType = filePathWithoutWildCard
-          .replace(".tsx", "")
-          .replace(".ts", "")
-          .replace(".jsx", "")
-          .replace(".js", "");
+        const filPathWithoutFileType = filePathWithoutWildCard.split(".")[0];
         mappedImports.push(filPathWithoutFileType);
       }
     });
